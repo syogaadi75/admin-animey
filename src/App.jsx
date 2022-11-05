@@ -1,6 +1,6 @@
 import './App.css'
 import Anime from './pages/Anime'
-import Dashboard from './pages/dashboard'
+import Dashboard from './pages/Dashboard'
 import Navbar from './pages/layout/Navbar'
 import Sidebar from './pages/layout/Sidebar'
 
