@@ -1,0 +1,15 @@
+.hamburger-line {
+    @apply w-[24px] h-[1.8px] my-[6px] block bg-primary;
+}
+
+.hamburger-active > span:nth-child(1){
+    @apply rotate-45;
+}
+
+.hamburger-active > span:nth-child(2){
+    @apply  -translate-x-4 scale-0;
+}
+
+.hamburger-active > span:nth-child(3){
+    @apply -rotate-45;
+}

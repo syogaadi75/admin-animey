@@ -1,0 +1,43 @@
+.menu {
+    @apply px-2 flex items-center text-dark cursor-pointer border-primary mb-3 hover:border-r-[2.5px];
+}
+
+.menu-icon {
+    @apply p-2 ml-2 rounded-lg group-hover:bg-primary group-hover:text-light transition-all ease-linear;
+}
+
+.menu-title {
+    @apply font-semibold tracking-wider w-full p-2 rounded-r-lg group-hover:pl-4 group-hover:text-primary transition-all ease-linear;
+}
+
+.menu-title-mini {
+    @apply min-w-[150px] max-w-[200px] lg:absolute lg:-left-[4.3rem] font-semibold tracking-wider p-2 rounded-r-lg group-hover:ml-4 group-hover:text-white group-hover:px-4 group-hover:rounded-lg group-hover:bg-primary lg:opacity-0 group-hover:opacity-100 group-hover:left-[4.3rem] transition-all ease-in-out duration-[400ms];
+}
+
+.menu-icon.active {
+    @apply bg-primary text-light;
+}
+
+.menu.active {
+    @apply border-r-[2.5px];
+}
+
+.menu-title.active {
+    @apply pl-4 text-primary;
+}
+
+.logo-text {
+    @apply text-xl font-semibold text-primary flex items-center gap-2;
+}
+
+.sidebar {
+    @apply hidden lg:flex lg:flex-col w-[300px];
+}
+
+.mini-sidebar {
+    @apply absolute top-0 left-0 w-[250px] bg-white lg:relative lg:flex lg:flex-col lg:w-[70px];
+}
+
+.profile-hide {
+    @apply translate-x-10;
+}
