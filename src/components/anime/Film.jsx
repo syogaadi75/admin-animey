@@ -80,7 +80,7 @@ function Film() {
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={title} type="text" placeholder='Title' />
                         <textarea className='w-full p-3 text-primary outline-none border border-primary' ref={synopsis} type="text" placeholder='Synopsis'></textarea>
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={poster} type="text" placeholder='Link Poster' />
-                        <select className='w-full p-3 text-primary outline-none border border-primary' ref={poster}>
+                        <select className='w-full p-3 text-primary outline-none border border-primary' ref={type}>
                             <option value="">Type</option>
                             <option value="episode">Episode</option>
                             <option value="movie">Movie</option>
