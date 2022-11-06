@@ -107,7 +107,9 @@ function Episode() {
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={video} type="text" placeholder='Link Video' />
                         <input value={number} onChange={(e) => setNumber(e.target.value)} className='w-full p-3 text-primary outline-none border border-primary' ref={no} type="number" placeholder='Nomor' />
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={date} type="text" placeholder='Date' />
-                        <button type='submit' className='p-3 bg-primary text-white w-[120px]'>Kirim</button>
+                        <div className='flex w-full justify-end'>
+                            <button type='submit' className='p-3 bg-primary text-white w-[120px]'>Kirim</button>
+                        </div>
                     </div>
                 </form>
             </div>
