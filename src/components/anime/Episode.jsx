@@ -3,9 +3,11 @@ import axios from 'axios'
 import Select from 'react-select'
 
 function Episode() {
+    const bvideoUpdate = useRef()
     const videoUpdate = useRef()
     const dateUpdate = useRef()
     const video = useRef()
+    const bvideo = useRef()
     const date = useRef()
     const no = useRef()
     const [number, setNumber] = useState(0)
@@ -44,6 +46,10 @@ function Episode() {
             video: video.current.value,
         }
 
+        if (bvideo.current.value != '') {
+            data.bvideo = bvideo.current.value
+        }
+
         if (no.current.value != '') {
             data.no = no.current.value
         }
@@ -64,6 +70,10 @@ function Episode() {
         var data = {
             video: videoUpdate.current.value,
             date: dateUpdate.current.value
+        }
+
+        if (bvideoUpdate.current.value != '') {
+            data.bvideo = bvideoUpdate.current.value
         }
 
         axios.put(apiUrl + '/episode/' + idEpisode, data).then(() => {
@@ -105,6 +115,7 @@ function Episode() {
                     <div className='flex flex-col gap-4'>
                         {options.length > 0 && <Select placeholder="Pilih Anime" options={options} onChange={cariFilm} />}
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={video} type="text" placeholder='Link Video' />
+                        <input className='w-full p-3 text-primary outline-none border border-primary' ref={bvideo} type="text" placeholder='Link Video Kedua' />
                         <input value={number} onChange={(e) => setNumber(e.target.value)} className='w-full p-3 text-primary outline-none border border-primary' ref={no} type="number" placeholder='Nomor' />
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={date} type="text" placeholder='Date' />
                         <div className='flex w-full justify-end'>
@@ -120,6 +131,7 @@ function Episode() {
                         {options.length > 0 && <Select placeholder="Pilih Anime" options={options} onChange={cariFilmUpdate} />}
                         {episodes.length > 0 && <Select placeholder="Pilih Episode" options={episodesOption} onChange={(selected) => setIdEpisode(selected.value)} />}
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={videoUpdate} type="text" placeholder='Link Video' />
+                        <input className='w-full p-3 text-primary outline-none border border-primary' ref={bvideoUpdate} type="text" placeholder='Link Video Kedua' />
                         <input className='w-full p-3 text-primary outline-none border border-primary' ref={dateUpdate} type="text" placeholder='Date' />
                         <button type='submit' className='p-3 bg-primary text-white w-[120px]'>Kirim</button>
                     </div>
