@@ -61,6 +61,7 @@ function Episode() {
         axios.post(apiUrl + '/episode/' + idFilm, data).then(() => {
             setNumber(number + 1)
             video.current.value = ''
+            bvideo.current.value = ''
             video.current.focus()
         })
     }
@@ -78,6 +79,7 @@ function Episode() {
 
         axios.put(apiUrl + '/episode/' + idEpisode, data).then(() => {
             videoUpdate.current.value = ''
+            bvideoUpdate.current.value = ''
         })
     }
 
