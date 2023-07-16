@@ -13,12 +13,11 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { setUser } from './redux/features/userSlice';
-import { BrowserRouter as Router } from 'react-router-dom'
 
 function App() {
   const apiUrl = useSelector(state => state.api.apiUrl)
   const hamburger = useSelector(state => state.sidebar.hamburger)
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -33,39 +32,37 @@ function App() {
       };
       const user = await axios.get(apiUrl + '/auth/me', { headers });
       if (user.data.message) {
-        // navigate('/login');
+        navigate('/login');
         return false;
       }
 
       dispatch(setUser({ user: user.data, token }))
     } else {
-      // navigate('/login');
+      navigate('/login');
     }
   }
 
   return (
-    <Router>
-      <div className='flex w-full'>
-        {/* Sidebar */}
-        <Sidebar />
-        <div className={`flex flex-col w-full ${hamburger ? 'md:ml-[70px]' : 'md:ml-[250px]'}`}>
-          {/* Navbar */}
-          <Navbar />
+    <div className='flex w-full'>
+      {/* Sidebar */}
+      <Sidebar />
+      <div className={`flex flex-col w-full ${hamburger ? 'md:ml-[70px]' : 'md:ml-[250px]'}`}>
+        {/* Navbar */}
+        <Navbar />
 
-          {/* Content */}
-          <div className='p-4 lg:p-8'>
-            <Routes>
-              <Route path="/" element={<Home />} /> {/* 👈 Renders at /app/ */}
-              <Route path="/film" element={<Film />} /> {/* 👈 Renders at /app/ */}
-              <Route path="/episode" element={<Episode />} /> {/* 👈 Renders at /app/ */}
-              <Route path="/login" element={<Login />} /> {/* 👈 Renders at /app/ */}
-            </Routes>
-          </div>
-
-          {/* Footer */}
+        {/* Content */}
+        <div className='p-4 lg:p-8'>
+          <Routes>
+            <Route path="/" element={<Home />} /> {/* 👈 Renders at /app/ */}
+            <Route path="/film" element={<Film />} /> {/* 👈 Renders at /app/ */}
+            <Route path="/episode" element={<Episode />} /> {/* 👈 Renders at /app/ */}
+            <Route path="/login" element={<Login />} /> {/* 👈 Renders at /app/ */}
+          </Routes>
         </div>
+
+        {/* Footer */}
       </div>
-    </Router>
+    </div>
   )
 }
 
