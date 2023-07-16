@@ -3,8 +3,30 @@ import Hamburger from '../../components/navbar/Hamburger'
 import { ArrowRightOnRectangleIcon, BellIcon, EnvelopeIcon, MagnifyingGlassIcon, MinusSmallIcon } from '@heroicons/react/24/outline'
 import { motion } from 'framer-motion'
 import UserDetail from '../../components/sidebar/UserDetail'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeUser } from '../../redux/features/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 function Navbar() {
+    const apiUrl = useSelector(state => state.api.apiUrl)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logout = async () => {
+        try {
+            await axios.get(apiUrl + '/auth/logout')
+
+            dispatch(removeUser())
+            sessionStorage.removeItem('auth')
+            sessionStorage.removeItem('token')
+
+            navigate('/login')
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     return (
         <div className='p-4 h-[70px] w-full flex items-center layout-shadow justify-between'>
@@ -16,7 +38,7 @@ function Navbar() {
                 </div>
             </div>
             <div className='flex items-center gap-3 lg:gap-4'>
-                <div className='flex items-center gap-1 cursor-pointer py-2 pl-3 hover:pr-3 text-primary rounded-lg hover:bg-primary hover:text-light transition-all ease-linear duration-200 font-semibold'>
+                <div className='flex items-center gap-1 cursor-pointer py-2 pl-3 hover:pr-3 text-primary rounded-lg hover:bg-primary hover:text-light transition-all ease-linear duration-200 font-semibold' onClick={() => logout()}>
                     <span className=''>Logout</span>
                     <ArrowRightOnRectangleIcon className='w-6' strokeWidth={2} />
                 </div>

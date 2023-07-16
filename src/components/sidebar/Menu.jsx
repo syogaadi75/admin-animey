@@ -2,9 +2,11 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setActiveMenu } from '../../redux/features/sidebarSlice'
 import './sidebar.css'
+import { useNavigate } from 'react-router-dom'
 
-function Menu({ Icon, title, active, hamburger }) {
+function Menu({ Icon, title, active, hamburger, path }) {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const menuVariants = {
         open: {
@@ -17,8 +19,12 @@ function Menu({ Icon, title, active, hamburger }) {
         },
     }
 
+    const changeMenu = (title, path) => {
+        navigate(path)
+    }
+
     return (
-        <div className={`menu group ${active && 'active'} `} onClick={() => dispatch(setActiveMenu({ activeMenu: title }))}>
+        <div className={`menu group ${active && 'active'} `} onClick={() => changeMenu(title, path)}>
             <div className={`menu-icon ${active && 'active'}`}>
                 <Icon className='w-5' strokeWidth={2} />
             </div>

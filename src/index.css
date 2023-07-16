@@ -38,5 +38,24 @@ a {
 }
 
 .card-shadow {
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  box-shadow: rgba(17, 12, 46, 0.1) 0px 10px 30px 0px;
+}
+
+.table {
+  width: 100%;
+}
+
+.table td {
+  padding: 10px;
+  @apply border-t border-gray-300;
+}
+
+.table thead td {
+  @apply font-semibold text-gray-500;
+}
+
+.input-login {
+  outline: none;
+  padding: 5px;
+  @apply border-b border-primary text-gray-600 w-[250px];
 }

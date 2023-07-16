@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Menu from '../../components/sidebar/Menu'
-import { Cog6ToothIcon, FolderIcon, HomeIcon, UserCircleIcon } from '@heroicons/react/24/outline'
+import { Cog6ToothIcon, DocumentDuplicateIcon, FilmIcon, FolderIcon, HomeIcon, UserCircleIcon, VideoCameraIcon } from '@heroicons/react/24/outline'
 import { UsersIcon } from '@heroicons/react/24/outline'
 import { useSelector } from 'react-redux'
 import UserDetail from '../../components/sidebar/UserDetail'
@@ -13,35 +13,32 @@ function Sidebar() {
     const sidebarMenus = [
         {
             icon: HomeIcon,
-            title: 'Dashboard',
+            title: 'Home',
+            path: '/',
         },
         {
-            icon: UsersIcon,
-            title: 'Users',
+            icon: DocumentDuplicateIcon,
+            title: 'Film',
+            path: '/film'
         },
         {
-            icon: FolderIcon,
-            title: 'Master Data',
-        },
-        {
-            icon: UserCircleIcon,
-            title: 'Profile',
-        },
-        {
-            icon: Cog6ToothIcon,
-            title: 'Settings',
-        },
+            icon: VideoCameraIcon,
+            title: 'Episode',
+            path: '/episode'
+        }
     ]
 
     return (
-        <div className={`z-10 lg:z-0 h-screen layout-shadow transition-all ease-linear duration-200 ${hamburger ? 'mini-sidebar' : 'sidebar'}`}>
-            <Logo hamburger={hamburger} />
-            <div className='mb-6'>
-                <UserDetail hamburger={hamburger} />
+        <div className='relative'>
+            <div className={`z-10 lg:z-0 h-screen layout-shadow transition-all ease-linear duration-200 ${hamburger ? 'mini-sidebar' : 'sidebar'}`}>
+                <Logo hamburger={hamburger} />
+                <div className='mb-6'>
+                    <UserDetail hamburger={hamburger} />
+                </div>
+                {sidebarMenus.map(menu => (
+                    <Menu hamburger={hamburger} key={menu.title} path={menu.path} Icon={menu.icon} title={menu.title} active={menu.title === active ? true : false} />
+                ))}
             </div>
-            {sidebarMenus.map(menu => (
-                <Menu hamburger={hamburger} key={menu.title} Icon={menu.icon} title={menu.title} active={menu.title === active ? true : false} />
-            ))}
         </div>
     )
 }

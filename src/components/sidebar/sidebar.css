@@ -31,11 +31,12 @@
 }
 
 .sidebar {
-    @apply hidden lg:flex lg:flex-col w-[300px];
+    @apply hidden lg:flex lg:flex-col w-[250px] fixed bg-white;
+    z-index: 99999 !important;
 }
 
 .mini-sidebar {
-    @apply absolute top-0 left-0 w-[250px] bg-white lg:relative lg:flex lg:flex-col lg:w-[70px];
+    @apply top-0 left-0 w-[250px] bg-white fixed lg:flex lg:flex-col lg:w-[70px];
 }
 
 .profile-hide {
