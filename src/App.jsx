@@ -12,7 +12,7 @@ import Login from './pages/Login';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { setUser } from './redux/features/userSlice';
+import { removeUser, setUser } from './redux/features/userSlice';
 
 function App() {
   const apiUrl = useSelector(state => state.api.apiUrl)
@@ -33,12 +33,18 @@ function App() {
       const user = await axios.get(apiUrl + '/auth/me', { headers });
       if (user.data.message) {
         navigate('/login');
+        dispatch(removeUser())
+        sessionStorage.removeItem('auth')
+        sessionStorage.removeItem('token')
         return false;
       }
 
       dispatch(setUser({ user: user.data, token }))
     } else {
       navigate('/login');
+      dispatch(removeUser())
+      sessionStorage.removeItem('auth')
+      sessionStorage.removeItem('token')
     }
   }
 
